@@ -1,0 +1,84 @@
+body {
+	background-color: antiquewhite;
+}
+h1 {
+	color: thistle;
+	text-align: center;
+}
+/* MENU STYLING */
+/* Problem: the menu goes behind the body :( */
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+}
+li {
+	float: left;
+	margin-right: 1px;
+}
+li a {
+	display: block;
+	min-width: 140px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	color: white;
+	text-decoration: none;
+}
+li:hover a {
+	background-color: thistle;
+}
+li:hover ul a {
+	background: wheat;
+	color: teal;
+	height: 40px;
+	line-height: 40px;
+}
+li:hover ul a:hover {
+	background: white;
+	color: thistle;
+}
+li ul {
+	display: none;
+}
+li ul li {
+	display: block;
+	float: none;
+}
+li ul li a {
+	width: auto;
+	min-width: 100px;
+	padding: 0 20px;
+}
+ul li a:hover + .submenu, .submenu:hover {
+	display: block;
+}
+.header_div {
+	position: relative;
+	margin: auto;
+	width: 70%;
+}
+
+/* BODY STYLING */
+.body_area {
+	position: absolute;
+	margin-top: 60px;
+	width: 90%;
+}
+
+/* FOOTER STYLING */
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	text-align: right;
+	height: 70px;
+	width: 100%;
+	background-color: thistle;
+}
+
+footer p {
+	margin-right: 20px;
+	color: white;
+}
