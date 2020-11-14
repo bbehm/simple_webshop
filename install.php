@@ -3,11 +3,13 @@
 // connecting to the mysql database
 // got Warning: mysqli_connect(): (HY000/2002): No such file or directory when using "localhost"
 // now getting: Warning: mysqli_connect(): (HY000/1045): Access denied for user... using password: YES
-$database = mysqli_connect("127.0.0.1", "root", "rootpasswd");
+// UPDATE: finally managed to connect to the database!
+
+$database = mysqli_connect('localhost:3307', 'root', 'rootroot');
 if(!mysqli_query($database, "CREATE DATABASE IF NOT EXISTS rush00")) {
 	exit("Query error\n");
 }
-$database = mysqli_connect("localhost:3307", "root", "rootpasswd", "rush00");
+$database = mysqli_connect('localhost:3307', 'root', 'rootroot', 'rush00');
 if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	exit();
