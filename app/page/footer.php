@@ -1,0 +1,3 @@
+<footer>
+	<!-- INSERT FOOTER -->
+</footer>
