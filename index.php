@@ -3,13 +3,14 @@ session_start();
 // run the install script --> connecting to database
 include('install.php');
 // checking get request --> which page to redirect to
-if ($_GET['page'] == "home" || !$_GET['page']) {
+
+if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 	$redirect = 'app/page/home.html';
 } else if ($_GET['page'] == "login") {
 	$redirect = 'app/user_management/login.php';
 } else if ($_GET['page'] == "create") {
 	$redirect = 'app/user_management/create_user.php';
-} else if ($_GET['page'] == "modif") {
+} else if ($_GET['page'] == "modify") {
 	$redirect = 'app/user_management/modify_user.php';
 } else if ($_GET['page'] == "logout") {
 	$redirect = 'app/user_management/logout.php';
@@ -27,10 +28,12 @@ if ($_SESSION['loggued_on_user']) {
 }
 ?>
 
-<?php include 'app/header.php' ?>
-	<div class="container">
-		<?php include $redirect; ?>
-	</div>
-	<?php include 'app/footer.php' ?>
+<div>
+	<?php include 'app/page/header.php' ?>
+</div>
+<div>
+	<?php include $redirect; ?>
+</div>
+<?php include 'app/page/footer.php' ?>
 </body>
 </html>

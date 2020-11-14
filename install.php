@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 // connecting to the mysql database
 // got Warning: mysqli_connect(): (HY000/2002): No such file or directory when using "localhost"
@@ -27,15 +26,18 @@ $sql_command = "CREATE TABLE IF NOT EXISTS items (
 	price int(100) NOT NULL,
 	PRIMARY KEY (`id`)
 );";
-mysqli_query($database, "$sql_command") or exit_error($mysqli_error($database));
+mysqli_query($database, $sql_command) or exit_error($mysqli_error($database));
 
+// TO DO: investigate whether I need to connect again? Says $database is not defined/what it should be
+
+/*
 // create table for all user info, still need to check what info is needed
 $sql_command = "CREATE TABLE IF NOT EXISTS users (
 	userId int(100) unsigned NOT NULL AUTO_INCREMENT,
 	username varchar(100),
 	passwd varchar(100)
 	);";
-mysqli_query($database, "$sql_command") or exit_error($mysqli_error($database));
+mysqli_query($database, $sql_command) or exit_error($mysqli_error($database));
 
 // create table for orders, still need to check what info is needed
 $sql_command = "CREATE TABLE IF NOT EXISTS orders (
@@ -44,5 +46,6 @@ $sql_command = "CREATE TABLE IF NOT EXISTS orders (
 	orderDate timestamp,
 	orderContent varchar(200)
 	);";
-mysqli_query($database, "$sql_command") or exit_error($mysqli_error($database));
+mysqli_query($database, $sql_command) or exit_error($mysqli_error($database));
+*/
 ?>
