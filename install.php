@@ -45,7 +45,6 @@ mysqli_query($database, $sql_command) or exit_error(mysqli_error($database));
 
 $sql_command = "CREATE TABLE IF NOT EXISTS orders (
 	orderId int(100) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	userId int(100) NOT NULL,
 	username varchar(200),
 	remoteAddr varchar(200),
 	itemName varchar(200),
