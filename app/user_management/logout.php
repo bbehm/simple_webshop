@@ -2,7 +2,7 @@
     <body>
         <div class="form">
             <h1>Log Out</h1>
-            <form action="index.php?page=login" method="post">
+            <form action="index.php?page=logout" method="post">
                 <input type="submit" name="submit" value="Log Out" />
             </form>
 <?php
