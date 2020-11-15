@@ -20,6 +20,8 @@ if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 	$redirect = 'app/basket.php';
 } else if ($_GET['page'] == "all" || $_GET['page'] == "dogs" || $_GET['page'] == "cats" || $_GET['page'] == "food" || $_GET['page'] == "accessories") {
 	$redirect = 'app/items/all.php';
+} else if ($_GET['page'] == "thanks") {
+	$redirect = 'app/page/thanks.html';
 }
 // still need to add item options (we need to choose what our webshop will be)
 // checks if there's an ongoing session - otherwise..

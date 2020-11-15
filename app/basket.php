@@ -18,35 +18,31 @@ if ($_SESSION['loggued_on_user]']) {
 }
 
 $query_res = mysqli_query($database, "SELECT * FROM orders WHERE username='$login' AND ordered='0'");
-?>
 
-<html>
-	<!-- Adding information on items in shopping basket -->
-	<div class="basket_container">
-		<h1>Your Basket</h1>
-		<table id="shopping_basket">
-			<?php
-			$item_id = 0;
-			$sum = 0;
-				foreach ($query_res as $item) {
-					echo "<tr>";
-					echo "<td>" . $item['itemName'] . "</td>";
-					echo "<td>" . $item['itemPrice'] . "</td>";
-					echo "<td><form method='post'><input type='hidden' name='hidden' value='$item_id'><input type='submit' name='submit' value='Delete'></form></td>";
-					echo "</tr>";
-					$sum = $sum + (int)$item['itemPrice'];
-					$item_id++;
-				}
-			?>
-			<tr><td>Total: </td><td><?php echo $sum ?></td><td><form method="post"><input type='submit' name='order' value='Order'></form></td></tr>
-		</table>
-	</div>
-</html>
-
-<?php
+// Adding information on items in shopping basket
+echo "<div class='basket_container'>";
+echo "<h1>Your Basket</h1>";
+echo "<table id='shopping_basket'>";
+	$item_id = 0;
+	$sum = 0;
+	foreach ($query_res as $item) {
+		echo "<tr>";
+		echo "<td>" . $item['itemName'] . "</td>";
+		echo "<td>" . $item['itemPrice'] . "</td>";
+		echo "<td><form method='post'><input type='hidden' name='hidden' value='$item_id'><input type='submit' name='delete' value='Delete'></form></td>";
+		echo "</tr>";
+		$sum = $sum + (int)$item['itemPrice'];
+		$item_id++;
+	}
+echo "<tr><td>Total: </td><td>".$sum."</td><td><form method='post'><input type='submit' name='order' value='Order'></form></td></tr>";
+echo "</table></div>";
 
 // checking if items need to be deleted
-if ($_POST['submit'] == "Delete") {
+
+// the $_POST['delete'] is empty even after form submission? Can't figure out why
+
+if ($_POST['delete'] == 'Delete') {
+	echo "hello\n";
 	$item_id = (int)$_POST['hidden'];
 	$search = 0;
 	foreach ($query_res as $item) {
@@ -59,7 +55,14 @@ if ($_POST['submit'] == "Delete") {
 	}
 }
 
-// checking if items are ordered
+// checking if items are ordered, if ordered --> thank you greeting
 
-
+if (isset($_POST['order']) && $_POST['order'] == 'Order') {
+	if (!$_SESSION['loggued_on_user']) {
+		header("location: index.php?page=login");
+	} else {
+		mysqli_query($database, "UPDATE orders SET ordered = '1' WHERE login='$login' AND ordered='0'");
+		header("location: index.php?page=thanks");
+	}
+}
 ?>
