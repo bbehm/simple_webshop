@@ -6,8 +6,7 @@ include('install.php');
 
 if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 	$redirect = 'app/page/home.html';
-}
-if ($_GET['page'] == 'login') {
+} else if ($_GET['page'] == 'login') {
 	$redirect = '/app/user_management/login.php';
 } else if ($_GET['page'] == "create") {
 	$redirect = 'app/user_management/create_user.php';
