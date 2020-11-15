@@ -16,7 +16,7 @@
     font-size: 25px;
 }
 
-.form form input[type="text"], .form form input[type="password"] {
+.form input[type="text"], .form input[type="password"], .form select {
     width: 100%;
     padding: 10px;
     border: none;
@@ -26,7 +26,7 @@
     color: black;
 }
 
-.form form input[type="submit"] {
+.form input[type="submit"] {
     width: 100%;
     padding: 10px;
     border: none;
@@ -38,7 +38,7 @@
     color: white;
 }
 
-.form form input[type=submit]:hover {
+.form input[type="submit"]:hover {
     background-color: violet;
 }
 
@@ -50,4 +50,13 @@
 
 .form a:visited {
     color: thistle;
+}
+
+.divs_two {
+    width: 100%;
+}
+
+.divs_two div {
+    width: 50%;
+    float: left;
 }

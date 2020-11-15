@@ -16,27 +16,41 @@
 $error = "<br /><br />ERROR\n";
 if ($_POST["submit"] === "Create an Account")
 {
-    if ($_POST["login"] === "" || $_POST["passwd"] === "")
-        exit ($error);
-    $new_user = array("login"=>$_POST["login"], "passwd"=>hash("whirlpool", $_POST["passwd"]));
-    if (file_exists("private/passwd"))
+    if ($_POST["login"] !== "" && $_POST["passwd"] !== "")
     {
-        $users = unserialize(file_get_contents("private/passwd"));
-        foreach ($users as $user)
+        $new_user = array("login"=>$_POST["login"], "passwd"=>hash("whirlpool", $_POST["passwd"]), "admin"=>FALSE);
+        if (file_exists("private/passwd"))
         {
-            if ($user["login"] === $new_user["login"])
-                exit ($error);
+            $users = unserialize(file_get_contents("private/passwd"));
+            $free_login = TRUE;
+            foreach ($users as $user)
+            {
+                if ($user["login"] === $new_user["login"])
+                {
+                    $free_login = FALSE;
+                    break ;
+                }
+            }
+            if ($free_login)
+            {
+                $users[] = $new_user;
+                file_put_contents("private/passwd", serialize($users)."\n");
+                header("Location: index.php?page=login");
+            }
+            else
+                echo $error;
         }
-        $users[] = $new_user;
+        else
+        {
+            if (!file_exists("private"))
+                mkdir("private");
+            $users = array($new_user);
+            file_put_contents("private/passwd", serialize($users)."\n");
+            header("Location: index.php?page=login");
+        }
     }
     else
-    {
-        if (!file_exists("private"))
-            mkdir("private");
-        $users = array($new_user);
-    }
-    file_put_contents("private/passwd", serialize($users)."\n");
-    header("Location: index.php?page=login");
+        echo $error;
 }
 
 ?>

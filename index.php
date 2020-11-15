@@ -15,7 +15,7 @@ if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 } else if ($_GET['page'] == "logout") {
 	$redirect = 'app/user_management/logout.php';
 } else if ($_GET['page'] == "admin") {
-	header("location: app/admin.php");
+	$redirect = 'app/admin.php';
 } else if ($_GET['page'] == "basket") {
 	$redirect = 'app/basket.php';
 } else if ($_GET['page'] == "all") {

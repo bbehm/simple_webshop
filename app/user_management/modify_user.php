@@ -26,20 +26,23 @@ $error = "<br /><br />ERROR\n";
 session_start();
 if ($_POST["submit_modif"] === "Change Your Password")
 {
-    if ($_POST["newpw"] === "")
-        exit ($error);
-    $modif_user = array("login"=>$_SESSION["loggued_on_user"], "passwd"=>hash("whirlpool", $_POST["oldpw"]));
-    $users = unserialize(file_get_contents("private/passwd"));
-    foreach ($users as $key=>$user)
+    if ($_POST["newpw"] !== "")
     {
-        if ($user["login"] === $modif_user["login"] && $user["passwd"] === $modif_user["passwd"])
+        $modif_user = array("login"=>$_SESSION["loggued_on_user"], "passwd"=>hash("whirlpool", $_POST["oldpw"]));
+        $users = unserialize(file_get_contents("private/passwd"));
+        foreach ($users as $key=>$user)
         {
-            $users[$key]["passwd"] = hash("whirlpool", $_POST["newpw"]);
-            file_put_contents("private/passwd", serialize($users)."\n");
-            header("Location: index.php?page=login");
+            if ($user["login"] === $modif_user["login"] && $user["passwd"] === $modif_user["passwd"])
+            {
+                $users[$key]["passwd"] = hash("whirlpool", $_POST["newpw"]);
+                file_put_contents("private/passwd", serialize($users)."\n");
+                header("Location: index.php?page=login");
+                break ;
+            }
         }
     }
-    echo $error;
+    else
+        echo $error;
 }
 if ($_POST["submit_del"] === "Delete Your Account")
 {
@@ -54,6 +57,7 @@ if ($_POST["submit_del"] === "Delete Your Account")
             file_put_contents("private/passwd", serialize($users)."\n");
             $_SESSION["loggued_on_user"] = "";
             header("Location: index.php?page=login");
+            break ;
         }
     }
     echo $error;

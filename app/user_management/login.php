@@ -14,14 +14,17 @@
             <a href="index.php?page=create">Create an Account</a>
 <?php
 
-function auth($login, $passwd)
+function auth($login, $passwd, &$admin)
 {
     $passwd = hash("whirlpool", $passwd);
     $users = unserialize(file_get_contents("private/passwd"));
     foreach ($users as $user)
     {
         if ($user["login"] === $login && $user["passwd"] === $passwd)
+        {
+            $admin = $user["admin"];
             return (TRUE);
+        }
     }
     return (FALSE);
 }
@@ -29,9 +32,10 @@ function auth($login, $passwd)
 if ($_POST["submit"] === "Log In")
 {
     session_start();
-    if (auth($_POST["login"], $_POST["passwd"]))
+    if (auth($_POST["login"], $_POST["passwd"], $admin))
     {
         $_SESSION["loggued_on_user"] = $_POST["login"];
+        $_SESSION["admin"] = $admin;
         header("Location: index.php");
     }
     else
