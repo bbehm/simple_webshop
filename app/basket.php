@@ -40,20 +40,13 @@ echo "</table></div>";
 
 // checking if items need to be deleted
 
-// the $_POST['delete'] is empty even after form submission? Can't figure out why
-
-//print_r($_POST);
-//print_r($_GET);
-
-
 if (isset($_POST['delete']) && $_POST['delete'] == 'Delete') {
-	echo "hello\n";
 	$item_id = (int)$_POST['hidden'];
 	$search = 0;
 	foreach ($query_res as $item) {
 		if ($search == $item_id) {
-			$mysql_id = $item['itemId'];
-			mysqli_query($database, "DELETE FROM orders WHERE itemId='$mysql_id';");
+			$mysql_id = $item['orderId'];
+			mysqli_query($database, "DELETE FROM orders WHERE orderId='$mysql_id';");
 			refresh_page();
 		}
 		$search++;
