@@ -1,14 +1,20 @@
 <?php
-include('../../install.php');
+include '../../install.php';
 function refresh_page() {
 	header("Location: " . $_SERVER['REQUEST_URI']);
 	exit();
 }
-
 if ($_GET['page'] == 'all') {
 	$query_result = mysqli_query($database, "SELECT * FROM items;");
-} 
-// add else ifs for different categories SELECT * FROM items WHERE ..."
+} else if ($_GET['page'] == 'food') {
+	$query_result = mysqli_query($database, "SELECT * FROM items WHERE category='food' or subcategory='food';");
+} else if ($_GET['page'] == 'dogs') {
+	$query_result = mysqli_query($database, "SELECT * FROM items WHERE category='dogs' or subcategory='dogs';");
+} else if ($_GET['page'] == 'cats') {
+	$query_result = mysqli_query($database, "SELECT * FROM items WHERE category='cats' or subcategory='cats';");
+} else if ($_GET['page'] == 'accessories') {
+	$query_result = mysqli_query($database, "SELECT * FROM items WHERE category='accessories' or subcategory='accessories';");
+}
 ?>
 
 <html>
@@ -51,7 +57,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "Add to basket") {
 		if ($index == $item_id) {
 			$item_name = $item['name'];
 			$item_price = $item['price'];
-			mysqli_query($database, "INSERT INTO orders (username, remoteAddr, itemName, itemPrice, ordered) VALUES ('$login', '$remote_addr', '$item_name', '$item_price', '0');");
+			mysqli_query($database, "INSERT INTO orders (username, remoteAddr, itemName, itemPrice, ordered) VALUES ('$login', '$remote_addr', '$item_name', '$item_price', 0);");
 			break ;
 		}
 		$index++;

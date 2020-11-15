@@ -12,28 +12,28 @@
         <nav>
         <ul>
                 <li><a href="index.php?page=home">Home</a></li>
-                <li><a href="" class="down">Category</a>
+                <li><a href="" class="down">Shop</a>
                     <ul class="submenu">
-                        <li><a href="">Category 1</a>
+                        <li><a href="index.php?page=dogs">Dogs</a>
                             <ul class="subsubmenu">
                                 <li><a href="">2</a></li>
                                 <li><a href="">3</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Category 2</a>
+                        <li><a href="index.php?page=cats">Cats</a>
                             <ul class="subsubmenu">
                                 <li><a href="">1</a></li>
                                 <li><a href="">2</a></li>
                                 <li><a href="">3</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Category 3</a>
+                        <li><a href="index.php?page=food">Food</a>
                             <ul class="subsubmenu">
                                 <li><a href="">1</a></li>
                                 <li><a href="">2</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Category 4</a>
+                        <li><a href="index.php?page=accessories">Accessories</a>
                             <ul class="subsubmenu">
                                 <li><a href="">1</a></li>
                                 <li><a href="">2</a></li>
@@ -43,7 +43,7 @@
                     </ul>
                 </li>
                 <li><a href="index.php?page=basket">Shopping Basket</a></li>
-                <li><a href="index.php?page=create">Create an Account</a></li>
+                <li><a href="index.php?page=create">Create Account</a></li>
                 <?php
                     if ($_SESSION['loggued_on_user'] == "") {
                         echo "<li><a href=\"index.php?page=login\">Log in</a></li>";
