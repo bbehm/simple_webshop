@@ -37,7 +37,7 @@ $query_res = mysqli_query($database, "SELECT * FROM orders WHERE username='$logi
 					$item_id++;
 				}
 			?>
-			<tr><td>Total: </td><td><?php echo $sum ?></td><td><form type='submit' name='order' value='Order'></form></td></tr>
+			<tr><td>Total: </td><td><?php echo $sum ?></td><td><form method="post"><input type='submit' name='order' value='Order'></form></td></tr>
 		</table>
 	</div>
 </html>
