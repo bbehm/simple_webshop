@@ -42,12 +42,13 @@
                     </ul>
                 </li>
                 <li><a href="index.php?page=basket">Shopping Basket</a></li>
+                <li><a href="index.php?page=create">Create Account</a></li>
                 <?php
                     if ($_SESSION['loggued_on_user'] == "") {
-                        echo "<li><a href=\"../index.php?page=login\">Log in</a></li>";
+                        echo "<li><a href=\"index.php?page=login\">Log in</a></li>";
                     } else {
-                        echo "<li><a href=\"../index.php?page=modify\">" . $_SESSION['loggued_on_user']."</a></li>";
-                        echo "<li><a href=\"../index.php?page=logout\">Log out</a></li>";
+                        echo "<li><a href=\"index.php?page=modify\">" . $_SESSION['loggued_on_user']."</a></li>";
+                        echo "<li><a href=\"index.php?page=logout\">Log out</a></li>";
                     }
                 ?>
             </ul>
