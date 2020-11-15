@@ -62,9 +62,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add to Basket') {
 
 $database = mysqli_connect('localhost:3307', 'root', 'rootroot', 'rush00');
 $item_id = (int)$_POST['hidden'];
-print_r($_POST);
-if (isset($_POST['delete_item']) && $_POST['delete_item'] == 'Delete') {
-	echo "hello";	   
+if (isset($_POST['delete_item']) && $_POST['delete_item'] == 'Delete') {   
 	mysqli_query($database, "DELETE FROM items WHERE itemId=$item_id");
 }
 
