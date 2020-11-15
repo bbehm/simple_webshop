@@ -18,7 +18,7 @@ if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 	$redirect = 'app/admin.php';
 } else if ($_GET['page'] == "basket") {
 	$redirect = 'app/basket.php';
-} else if ($_GET['page'] == "all") {
+} else if ($_GET['page'] == "all" || $_GET['page'] == "dogs" || $_GET['page'] == "cats" || $_GET['page'] == "food" || $_GET['page'] == "accessories") {
 	$redirect = 'app/items/all.php';
 }
 // still need to add item options (we need to choose what our webshop will be)
