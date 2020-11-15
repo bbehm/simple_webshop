@@ -61,7 +61,7 @@ if (isset($_POST['order']) && $_POST['order'] == 'Order') {
 	if (!$_SESSION['loggued_on_user']) {
 		header("location: index.php?page=login");
 	} else {
-		mysqli_query($database, "UPDATE orders SET ordered = '1' WHERE login='$login' AND ordered='0'");
+		mysqli_query($database, "UPDATE orders SET ordered = '1' WHERE username='$login' AND ordered='0'");
 		header("location: index.php?page=thanks");
 	}
 }
