@@ -13,6 +13,7 @@ if ($_GET['page'] == 'all') {
 
 <html>
 	<div class="container">
+		<h1>Happy shopping!</h1>
 		<div class="row">
 			<div class="column">
 				<div class="thumbnail">

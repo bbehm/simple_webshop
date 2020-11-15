@@ -1,12 +1,10 @@
 <?php
-// connecting to the mysql database
-// got Warning: mysqli_connect(): (HY000/2002): No such file or directory when using "localhost"
-// now getting: Warning: mysqli_connect(): (HY000/1045): Access denied for user... using password: YES
-// UPDATE: finally managed to connect to the database!
 
 function exit_error($str) {
 	exit("ERROR: " . $str . "\n");
 }
+
+// connecting to the mysql database
 
 $database = mysqli_connect('localhost:3307', 'root', 'rootroot');
 if ($database == false) {
@@ -27,9 +25,11 @@ if (mysqli_connect_errno()) {
 $sql_command = "CREATE TABLE IF NOT EXISTS items (
 	itemId int(100) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	itemName varchar(100) NOT NULL,
+	category varchar(100) NOT NULL,
+	subcategory varchar(100) NOT NULL,
 	itemDescription varchar(500) NOT NULL,
 	price int(100) NOT NULL
-);";
+	);";
 mysqli_query($database, $sql_command) or exit_error(mysqli_error($database));
 
 // create table for all user info, still need to check what info is needed
