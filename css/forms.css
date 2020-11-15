@@ -12,6 +12,10 @@
     font-size: 30px;
 }
 
+.form h2 {
+    font-size: 25px;
+}
+
 .form form input[type="text"], .form form input[type="password"] {
     width: 100%;
     padding: 10px;
