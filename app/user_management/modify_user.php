@@ -22,8 +22,8 @@
             </form>
 <?php
 
-$error = "<br /><br />ERROR\n";
 session_start();
+$error = "<br /><br />ERROR\n";
 if ($_POST["submit_modif"] === "Change Your Password")
 {
     if ($_POST["newpw"] !== "")
@@ -56,6 +56,7 @@ if ($_POST["submit_del"] === "Delete Your Account")
             $users = array_values($users);
             file_put_contents("private/passwd", serialize($users)."\n");
             $_SESSION["loggued_on_user"] = "";
+            $_SESSION["admin"] = FALSE;
             header("Location: index.php?page=login");
             break ;
         }

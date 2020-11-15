@@ -30,7 +30,6 @@ foreach ($users as $user)
                 User <select name="login">
 <?php
 
-$users = unserialize(file_get_contents("private/passwd"));
 foreach ($users as $user)
 {
     if ($user["login"] !== "root")
@@ -51,11 +50,10 @@ foreach ($users as $user)
             </form>
 <?php
 
+session_start();
 if ($_POST["submit"] === "Give/Take Admin Rights")
 {
-    session_start();
     $admin = array("login"=>$_SESSION["loggued_on_user"], "passwd"=>hash("whirlpool", $_POST["passwd"]));
-    $users = unserialize(file_get_contents("private/passwd"));
     $correct_passwd = FALSE;
     foreach ($users as $key=>$user)
     {

@@ -29,9 +29,9 @@ function auth($login, $passwd, &$admin)
     return (FALSE);
 }
 
+session_start();
 if ($_POST["submit"] === "Log In")
 {
-    session_start();
     if (auth($_POST["login"], $_POST["passwd"], $admin))
     {
         $_SESSION["loggued_on_user"] = $_POST["login"];
