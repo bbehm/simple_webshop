@@ -7,9 +7,9 @@
             </form>
 <?php
 
+session_start();
 if ($_POST["submit"] === "Log Out")
 {
-    session_start();
     $_SESSION["loggued_on_user"] = "";
     $_SESSION["admin"] = FALSE;
     header("Location: index.php?page=login");
