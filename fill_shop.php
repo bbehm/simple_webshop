@@ -11,8 +11,8 @@ if (mysqli_connect_errno()) {
 mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
 mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
 mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
-mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
-mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
+mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog collar','accessories', 'dogs', 'Yummy!', 10)");
+mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Cat collar','accessories', 'cats', 'Yummy!', 10)");
 mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
 mysqli_query($database, "INSERT INTO rush00.items (itemName, category, subcategory, itemDescription, price) VALUES ('Dog treat','food', 'treats', 'Yummy!', 10)");
 
