@@ -1,0 +1,29 @@
+/* SHOPPING BASKET */
+
+#shopping_basket {
+	width: 100%;
+	padding: 50px;
+	color: white;
+}
+
+.basket_container {
+	position: relative;
+	margin: auto;
+	width: 100%;
+}
+
+/* ITEMS DISPLAY */
+
+.box {
+	display: block;
+	padding: 4px;
+	margin: 50px 50px 100px 50px;
+	line-height: 1.5;
+	border: 2px solid #ddd;
+	border-radius: 4px;
+	background-color: #ddd;
+}
+
+.box h2 {
+	color: #B35D9D;
+}

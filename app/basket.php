@@ -22,8 +22,9 @@ $query_res = mysqli_query($database, "SELECT * FROM orders WHERE username='$logi
 
 <html>
 	<!-- Adding information on items in shopping basket -->
-	<div>
-		<table>
+	<div class="basket_container">
+		<h1>Your Basket</h1>
+		<table id="shopping_basket">
 			<?php
 			$item_id = 0;
 			$sum = 0;
