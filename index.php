@@ -19,6 +19,8 @@ if ($_GET['page'] == 'login') {
 	header("location: app/admin.php");
 } else if ($_GET['page'] == "basket") {
 	$redirect = 'app/basket.php';
+} else if ($_GET['page'] == "all") {
+	$redirect = 'app/items/all.php';
 }
 // still need to add item options (we need to choose what our webshop will be)
 // checks if there's an ongoing session - otherwise..

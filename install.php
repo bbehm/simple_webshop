@@ -8,15 +8,25 @@ function exit_error($str) {
 	exit("ERROR: " . $str . "\n");
 }
 
-$database = mysqli_connect('localhost:3307', 'root', 'rootroot');
-if(!mysqli_query($database, "CREATE DATABASE IF NOT EXISTS rush00")) {
-	exit("Query error\n");
+function connect_first() {
+	$database = mysqli_connect('localhost:3307', 'root', 'rootroot');
+	if(!mysqli_query($database, "CREATE DATABASE IF NOT EXISTS rush00")) {
+		exit("Query error\n");
+	}
+	return ($database);
 }
-$database = mysqli_connect('localhost:3307', 'root', 'rootroot', 'rush00');
-if (mysqli_connect_errno()) {
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	exit();
+
+function connect() {
+	$database = mysqli_connect('localhost:3307', 'root', 'rootroot', 'rush00');
+	if (mysqli_connect_errno()) {
+		echo "Connection failed: " . mysqli_connect_error();
+		exit ();
+	}
+	return ($database);
 }
+
+$database = connect_first();
+$database = connect();
 
 // create table for available items on site, still need to check what info is needed
 $sql_command = "CREATE TABLE IF NOT EXISTS items (
@@ -30,8 +40,9 @@ mysqli_query($database, $sql_command) or exit_error($mysqli_error($database));
 
 // TO DO: investigate whether I need to connect again? Says $database is not defined/what it should be
 
-/*
 // create table for all user info, still need to check what info is needed
+/*
+$database = connect();
 $sql_command = "CREATE TABLE IF NOT EXISTS users (
 	userId int(100) unsigned NOT NULL AUTO_INCREMENT,
 	username varchar(100),
@@ -40,11 +51,16 @@ $sql_command = "CREATE TABLE IF NOT EXISTS users (
 mysqli_query($database, $sql_command) or exit_error($mysqli_error($database));
 
 // create table for orders, still need to check what info is needed
+$database = connect();
 $sql_command = "CREATE TABLE IF NOT EXISTS orders (
 	orderId int(100) unsigned NOT NULL AUTO_INCREMENT,
 	userId int(100) NOT NULL,
+	username varchar(200),
+	remoteAddr varchar(200),
+	itemName varchar(200),
+	itemPrice int (100),
+	ordered int (5),
 	orderDate timestamp,
-	orderContent varchar(200)
 	);";
 mysqli_query($database, $sql_command) or exit_error($mysqli_error($database));
 */
