@@ -46,10 +46,10 @@
                 <li><a href="index.php?page=create">Create an Account</a></li>
                 <?php
                     if ($_SESSION['loggued_on_user'] == "") {
-                        echo "<li><a href=\"index.php?page=login\">Log in</a></li>";
+                        echo "<li><a href=\"index.php?page=login\">Log In</a></li>";
                     } else {
                         echo "<li><a href=\"index.php?page=modify\">" . $_SESSION['loggued_on_user']."</a></li>";
-                        echo "<li><a href=\"index.php?page=logout\">Log out</a></li>";
+                        echo "<li><a href=\"index.php?page=logout\">Log Out</a></li>";
                     }
                 ?>
             </ul>

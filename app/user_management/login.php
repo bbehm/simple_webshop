@@ -12,9 +12,6 @@
                 <input type="submit" name="submit" value="Log In" />
             </form>
             <a href="index.php?page=create">Create an Account</a>
-            <br />
-            <br />
-            <a href="index.php?page=modify">Change Your Password</a>
 <?php
 
 function auth($login, $passwd)
@@ -35,7 +32,7 @@ if ($_POST["submit"] === "Log In")
     if (auth($_POST["login"], $_POST["passwd"]))
     {
         $_SESSION["loggued_on_user"] = $_POST["login"];
-        echo "<br /><br />OK\n";
+        header("Location: index.php");
     }
     else
     {

@@ -1,8 +1,20 @@
-
-
+<html>
+    <body>
+        <div class="form">
+            <h1>Log Out</h1>
+            <form action="index.php?page=login" method="post">
+                <input type="submit" name="submit" value="Log Out" />
+            </form>
 <?php
 
-session_start();
-$_SESSION["loggued_on_user"] = "";
+if ($_POST["submit"] === "Log Out")
+{
+    session_start();
+    $_SESSION["loggued_on_user"] = "";
+    header("Location: index.php?page=login");
+}
 
 ?>
+        </form>
+    </body>
+</html>
