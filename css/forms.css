@@ -1,7 +1,8 @@
 .form {
+    position: absolute;
     width: 50%;
-    margin-right: auto;
-    margin-left: auto;
+    top: 60px;
+    left: 25%;
     padding: 5px;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
