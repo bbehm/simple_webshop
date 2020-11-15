@@ -6,7 +6,6 @@ h1 {
 	text-align: center;
 }
 /* MENU STYLING */
-/* Problem: the menu goes behind the body :( */
 ul {
 	list-style-type: none;
 	margin: 0;
