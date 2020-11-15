@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/items.css">
     <title>Shop</title>
 </head>
 <body>

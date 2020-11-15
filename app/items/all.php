@@ -16,21 +16,17 @@ if ($_GET['page'] == 'all') {
 	$query_result = mysqli_query($database, "SELECT * FROM items WHERE category='accessories' or subcategory='accessories';");
 }
 
-echo "<div>";
 echo "<h1>Happy shopping!</h1>";
-echo "<div>";
-echo "<div>";
-echo "<div>";
+echo "<div class='box'>";
 		$item_id = 0;
 		foreach ($query_result as $item) {
 			echo "<h2>" . $item['itemName'] . "</h2>";
 			echo "<p>" . $item['itemDescription'] . "</p>";
-			echo "<p>" . $item['price'] . "</p>";
+			echo "<p>" . $item['price'] . "€</p>";
 			echo "<a><form method='post'><input type='hidden' name='hidden' value='$item_id'><input type='submit' name='submit' value='Add to Basket'></form></a>";
+			echo "<br />";
 			$item_id++;
 		}
-echo "</div>";
-echo "</div>";
 echo "</div>";
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Add to Basket') {
