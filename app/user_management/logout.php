@@ -1,3 +1,8 @@
+
+
 <?php
-// to be taken from day04
+
+session_start();
+$_SESSION["loggued_on_user"] = "";
+
 ?>

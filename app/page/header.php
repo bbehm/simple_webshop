@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/forms.css">
     <title>Shop</title>
 </head>
 <body>
@@ -42,7 +43,7 @@
                     </ul>
                 </li>
                 <li><a href="index.php?page=basket">Shopping Basket</a></li>
-                <li><a href="index.php?page=create">Create Account</a></li>
+                <li><a href="index.php?page=create">Create an Account</a></li>
                 <?php
                     if ($_SESSION['loggued_on_user'] == "") {
                         echo "<li><a href=\"index.php?page=login\">Log in</a></li>";

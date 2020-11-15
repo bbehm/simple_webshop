@@ -1,0 +1,49 @@
+.form {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.form h1 {
+    font-size: 30px;
+}
+
+.form form input[type="text"], .form form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.form form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: thistle;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.form form input[type=submit]:hover {
+    background-color: violet;
+}
+
+.form a:link {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.form a:visited {
+    color: thistle;
+}
