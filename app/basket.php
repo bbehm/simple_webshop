@@ -20,7 +20,7 @@ if ($_SESSION['loggued_on_user]']) {
 $query_res = mysqli_query($database, "SELECT * FROM orders WHERE username='$login' AND ordered='0'");
 
 // Adding information on items in shopping basket
-echo "<div class='basket_container'>";
+echo "<div class='body_area'>";
 echo "<h1>Your Basket</h1>";
 echo "<table id='shopping_basket'>";
 	$item_id = 0;
@@ -34,6 +34,7 @@ echo "<table id='shopping_basket'>";
 		$sum = $sum + (int)$item['itemPrice'];
 		$item_id++;
 	}
+
 echo "<tr><td>Total: </td><td>".$sum."</td><td><form method='post'><input type='submit' name='order' value='Order'></form></td></tr>";
 echo "</table></div>";
 
@@ -41,7 +42,11 @@ echo "</table></div>";
 
 // the $_POST['delete'] is empty even after form submission? Can't figure out why
 
-if ($_POST['delete'] == 'Delete') {
+//print_r($_POST);
+//print_r($_GET);
+
+
+if (isset($_POST['delete']) && $_POST['delete'] == 'Delete') {
 	echo "hello\n";
 	$item_id = (int)$_POST['hidden'];
 	$search = 0;
@@ -54,6 +59,7 @@ if ($_POST['delete'] == 'Delete') {
 		$search++;
 	}
 }
+
 
 // checking if items are ordered, if ordered --> thank you greeting
 
