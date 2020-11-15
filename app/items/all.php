@@ -1,5 +1,5 @@
 <?php
-include '../../install.php';
+
 function refresh_page() {
 	header("Location: " . $_SERVER['REQUEST_URI']);
 	exit();

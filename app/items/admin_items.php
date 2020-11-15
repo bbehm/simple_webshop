@@ -1,9 +1,10 @@
 <?php
-include '../../install.php';
+
 function refresh_page() {
 	header("Location: " . $_SERVER['REQUEST_URI']);
 	exit();
 }
+
 if ($_GET['page'] == 'all') {
 	$query_result = mysqli_query($database, "SELECT * FROM items;");
 } else if ($_GET['page'] == 'food') {
@@ -25,10 +26,10 @@ echo "<div class='box'>";
 			echo "<p>" . $item['price'] . "€</p>";
 			echo "<a><form method='post'><input type='hidden' name='hidden' value='$item_id'><input type='submit' name='submit' value='Add to Basket'></form></a>";
 			echo "<br />";
-			$item_id++;
+			$item_id = $item['itemId'];
 			echo "<form action='' method='post'>";
-			echo "<input type='hidden' name='item_id' value='{$id}'>";
-			echo "<input type='submit' name='delete' value='Delete'>";
+			echo "<input type='hidden' name='item_id' value='{$item_id}'>";
+			echo "<input type='submit' name='delete_item' value='Delete'>";
 			echo "<input type='submit' name='modify_item' value='Edit'>";
 			echo "</form>";
 		}
@@ -57,14 +58,19 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add to Basket') {
 		}
 		$index++;
 	}
-	refresh_page();
+}
 
-	if (isset($_POST['delete'])) {
-        if ($_POST['delete'] == "Delete") {
-            $id = $_POST['item_id'];
-            $query = mysqli_query($database, "DELETE FROM items WHERE itemId='$id'");
-            refresh_page();
+$database = mysqli_connect('localhost:3307', 'root', 'rootroot', 'rush00');
+$item_id = (int)$_POST['hidden'];
+print_r($_POST);
+if (isset($_POST['delete_item']) && $_POST['delete_item'] == 'Delete') {
+	echo "hello";	   
+	mysqli_query($database, "DELETE FROM items WHERE itemId=$item_id");
+}
+
+if (isset($_POST['modify_item']) && $_POST['modify_item'] == 'Edit') {
+     if ($_POST['modify_item'] == 'Edit') {
+
         }
     }
-}
 ?>
