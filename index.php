@@ -2,8 +2,8 @@
 session_start();
 // run the install script --> connecting to database
 include('install.php');
-// checking get request --> which page to redirect to
 
+// checking get request --> which page to redirect to
 if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 	$redirect = 'app/page/home.html';
 } else if ($_GET['page'] == 'login') {
@@ -25,12 +25,14 @@ if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 } else if ($_GET['page'] == "thanks") {
 	$redirect = 'app/page/thanks.html';
 }
-// still need to add item options (we need to choose what our webshop will be)
-// checks if there's an ongoing session - otherwise..
+
 if ($_SESSION['loggued_on_user']) {
 	$login = $_SESSION['loggued_on_user'];
 } else {
-	// what happens if not?
+	$login = $_SERVER['REMOTE_ADDR'];
+	if (strstr($login, "::")) {
+		$login = trim(str_ireplace("::", " ", $login));
+	}
 }
 ?>
 

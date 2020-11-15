@@ -32,15 +32,6 @@ $sql_command = "CREATE TABLE IF NOT EXISTS items (
 	);";
 mysqli_query($database, $sql_command) or exit_error(mysqli_error($database));
 
-// create table for all user info, still need to check what info is needed
-
-$sql_command = "CREATE TABLE IF NOT EXISTS users (
-	userId int(100) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username varchar(100),
-	passwd varchar(100)
-	);";
-mysqli_query($database, $sql_command) or exit_error(mysqli_error($database));
-
 // create table for orders, still need to check what info is needed
 
 $sql_command = "CREATE TABLE IF NOT EXISTS orders (
