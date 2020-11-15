@@ -15,19 +15,20 @@ foreach ($users as $user)
     echo "<div class=\"divs_two\">\n";
     echo "<div>".$user["login"]."</div>\n";
     if ($user["admin"])
-        echo "<div>Admin</div>\n";
+        echo "<div>Yes</div>\n";
     else
-        echo "<div>Not an Admin</div>\n";
-    echo "</div>\n<br />\n<br />\n";
+        echo "<div>No</div>\n";
+    echo "</div>\n";
 }
 
 ?>
+            <br />
             <h2>Give/Take Admin Rights</h2>
             <form action="index.php?page=admin" method="post">
-                Your Password <input type="password" name="passwd" value="" placeholder="Your Password" />
+                Your Password <input type="password" name="passwd1" value="" placeholder="Your Password" />
                 <br />
                 <br />
-                User <select name="login">
+                User <select name="login1">
 <?php
 
 foreach ($users as $user)
@@ -46,35 +47,85 @@ foreach ($users as $user)
                 </select>
                 <br />
                 <br />
-                <input type="submit" name="submit" value="Give/Take Admin Rights" />
+                <input type="submit" name="admin" value="Give/Take Admin Rights" />
+            </form>
+            <br />
+            <h2>Delete an User</h2>
+            <form action="index.php?page=admin" method="post">
+                Your Password <input type="password" name="passwd2" value="" placeholder="Your Password" />
+                <br />
+                <br />
+                User <select name="login2">
+<?php
+
+foreach ($users as $user)
+{
+    if ($user["login"] !== "root")
+        echo "<option value=\"".$user["login"]."\">".$user["login"]."</option>\n";
+}
+
+?>
+                </select>
+                <br />
+                <br />
+                <input type="submit" name="del" value="Delete an User" />
             </form>
 <?php
 
-session_start();
-if ($_POST["submit"] === "Give/Take Admin Rights")
+function auth($login, $passwd, &$admin)
 {
-    $admin = array("login"=>$_SESSION["loggued_on_user"], "passwd"=>hash("whirlpool", $_POST["passwd"]));
-    $correct_passwd = FALSE;
-    foreach ($users as $key=>$user)
+    $passwd = hash("whirlpool", $passwd);
+    $users = unserialize(file_get_contents("private/passwd"));
+    foreach ($users as $user)
     {
-        if ($user["login"] === $admin["login"] && $user["passwd"] === $admin["passwd"])
+        if ($user["login"] === $login && $user["passwd"] === $passwd)
         {
-            $correct_passwd = TRUE;
-            break ;
+            $admin = $user["admin"];
+            return (TRUE);
         }
     }
-    if ($correct_passwd)
+    return (FALSE);
+}
+
+session_start();
+if ($_POST["admin"] === "Give/Take Admin Rights")
+{
+    if (auth($_SESSION["loggued_on_user"], $_POST["passwd1"], $admin))
     {
         foreach ($users as $key=>$user)
         {
-            if ($user["login"] === $_POST["login"])
+            if ($user["login"] === $_POST["login1"])
             {
                 if ($_POST["admin_rights"] === "give")
                     $users[$key]["admin"] = TRUE;
                 else
                     $users[$key]["admin"] = FALSE;
                 file_put_contents("private/passwd", serialize($users)."\n");
-                if ($user["login"] === $admin["login"])
+                if ($_POST["login1"] === $_SESSION["loggued_on_user"])
+                {
+                    $_SESSION["loggued_on_user"] = "";
+                    $_SESSION["admin"] = FALSE;
+                    header("Location: index.php?page=login");
+                }
+                break ;
+            }
+        }
+    }
+    else
+        echo "<br /><br />ERROR\n";
+}
+if ($_POST["del"] === "Delete an User")
+{
+    if (auth($_SESSION["loggued_on_user"], $_POST["passwd2"], $admin))
+    {
+        foreach ($users as $key=>$user)
+        {
+            if ($user["login"] === $_POST["login2"])
+            {
+                unset($users[$key]);
+                $users = array_values($users);
+                file_put_contents("private/passwd", serialize($users)."\n");
+                if ($_POST["login2"] === $_SESSION["loggued_on_user"])
                 {
                     $_SESSION["loggued_on_user"] = "";
                     $_SESSION["admin"] = FALSE;
@@ -89,6 +140,11 @@ if ($_POST["submit"] === "Give/Take Admin Rights")
 }
 
 ?>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         </div>
     </body>
 </html>
