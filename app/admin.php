@@ -50,7 +50,7 @@ foreach ($users as $user)
                 <input type="submit" name="admin" value="Give/Take Admin Rights" />
             </form>
             <br />
-            <h2>Delete an User</h2>
+            <h2>Delete a User</h2>
             <form action="index.php?page=admin" method="post">
                 Your Password <input type="password" name="passwd2" value="" placeholder="Your Password" />
                 <br />
@@ -68,7 +68,7 @@ foreach ($users as $user)
                 </select>
                 <br />
                 <br />
-                <input type="submit" name="del" value="Delete an User" />
+                <input type="submit" name="del" value="Delete a User" />
             </form>
 <?php
 
