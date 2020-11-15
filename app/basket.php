@@ -17,7 +17,7 @@ if ($_SESSION['loggued_on_user]']) {
 	$login = $remote_addr;
 }
 
-$query_res = mysqli_query($link, "SELECT * FROM orders WHERE username='$login' AND ordered='0'");
+$query_res = mysqli_query($database, "SELECT * FROM orders WHERE username='$login' AND ordered='0'");
 ?>
 
 <html>
@@ -29,15 +29,15 @@ $query_res = mysqli_query($link, "SELECT * FROM orders WHERE username='$login' A
 			$sum = 0;
 				foreach ($query_res as $item) {
 					echo "<tr>";
-					echo "<td>" . $item['name'] . "</td>";
-					echo "<td>" . $item['price'] . "</td>";
+					echo "<td>" . $item['itemName'] . "</td>";
+					echo "<td>" . $item['itemPrice'] . "</td>";
 					echo "<td><form method='post'><input type='hidden' name='hidden' value='$item_id'><input type='submit' name='submit' value='Delete'></form></td>";
 					echo "</tr>";
-					$sum = $sum + (int)$item['price'];
+					$sum = $sum + (int)$item['itemPrice'];
 					$item_id++;
 				}
 			?>
-			<tr><td>Total: </td><td><?= $total ?></td><td><form type='submit' name='order' value='Order'></form></td></tr>
+			<tr><td>Total: </td><td><?php echo $sum ?></td><td><form type='submit' name='order' value='Order'></form></td></tr>
 		</table>
 	</div>
 </html>
