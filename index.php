@@ -18,7 +18,7 @@ if ($_GET['page'] == "home" || !isset($_GET['page'])) {
 	$redirect = 'app/admin.php';
 } else if ($_GET['page'] == "basket") {
 	$redirect = 'app/basket.php';
-}  else if (($_GET['page'] == "all" || $_GET['page'] == "dogs" || $_GET['page'] == "cats" || $_GET['page'] == "food" || $_GET['page'] == "accessories") && $_SESSION['loggued_on_user'] == 'root') {
+}  else if (($_GET['page'] == "all" || $_GET['page'] == "dogs" || $_GET['page'] == "cats" || $_GET['page'] == "food" || $_GET['page'] == "accessories") && $_SESSION['admin']) {
 	$redirect = 'app/items/admin_items.php';
 } else if ($_GET['page'] == "all" || $_GET['page'] == "dogs" || $_GET['page'] == "cats" || $_GET['page'] == "food" || $_GET['page'] == "accessories") {
 	$redirect = 'app/items/all.php';
