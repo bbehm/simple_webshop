@@ -27,7 +27,7 @@ echo "<table id='shopping_basket'>";
 	$sum = 0;
 	foreach ($query_res as $item) {
 		echo "<tr>";
-		echo "<td>" . $item['itemName'] . "€</td>";
+		echo "<td>" . $item['itemName'] . "</td>";
 		echo "<td>" . $item['itemPrice'] . "€</td>";
 		echo "<td><form method='post'><input type='hidden' name='hidden' value='$item_id'><input type='submit' name='delete' value='Delete'></form></td>";
 		echo "</tr>";
