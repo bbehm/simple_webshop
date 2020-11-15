@@ -17,6 +17,21 @@ if ($_SESSION['loggued_on_user]']) {
 	$login = $remote_addr;
 }
 
+// to fetch items in basket when logged in after filling basket
+
+if ($_SESSION['loggued_on_user'] == $login) {
+	$remote_addr = $_SERVER['REMOTE_ADDR'];
+	if (strstr($remote_addr, "::")) {
+		$remote_addr = trim(str_ireplace("::", " ", $remote_addr));
+	}
+
+	$query_res = mysqli_query($database, "SELECT * FROM orders WHERE remoteAddr='$remote_addr' AND ordered='0'");
+
+   if (mysqli_fetch_array($query_res)) {
+		$query_res = mysqli_query($database, "UPDATE orders SET username='$login' WHERE remoteAddr='$remote_addr' AND ordered='0'");
+	}
+}
+
 $query_res = mysqli_query($database, "SELECT * FROM orders WHERE username='$login' AND ordered='0'");
 
 // Adding information on items in shopping basket
