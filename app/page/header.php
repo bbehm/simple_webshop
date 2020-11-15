@@ -11,7 +11,6 @@
         <nav>
         <ul>
                 <li><a href="index.php?page=home">Home</a></li>
-                <li><a href="index.php?page=basket">Shopping Basket</a></li>
                 <li><a href="" class="down">Category</a>
                     <ul class="submenu">
                         <li><a href="">Category 1</a>
@@ -42,6 +41,7 @@
                         <li><a href="index.php?page=all">All</a></li>
                     </ul>
                 </li>
+                <li><a href="index.php?page=basket">Shopping Basket</a></li>
                 <?php
                     if ($_SESSION['loggued_on_user'] == "") {
                         echo "<li><a href=\"../index.php?page=login\">Log in</a></li>";

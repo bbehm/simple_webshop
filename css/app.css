@@ -1,8 +1,8 @@
 body {
-	background-color: antiquewhite;
+	background-color: lightgrey;
 }
 h1 {
-	color: thistle;
+	color: white;
 	text-align: center;
 }
 /* MENU STYLING */
@@ -11,7 +11,7 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	position: absolute;
+	float: right;
 }
 li {
 	float: left;
@@ -30,8 +30,8 @@ li:hover a {
 	background-color: thistle;
 }
 li:hover ul a {
-	background: wheat;
-	color: teal;
+	background: thistle;
+	color: white;
 	height: 40px;
 	line-height: 40px;
 }
@@ -56,8 +56,11 @@ ul li a:hover + .submenu, .submenu:hover {
 }
 .header_div {
 	position: relative;
+	z-index: 1000;
 	margin: auto;
-	width: 70%;
+	width: 100%;
+	align-items: center;
+	float: right;
 }
 
 /* BODY STYLING */
