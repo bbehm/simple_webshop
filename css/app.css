@@ -70,6 +70,12 @@ ul li a:hover + .submenu, .submenu:hover {
 	width: 90%;
 }
 
+.body_area_two {
+	position: absolute;
+	margin: 50px 50px 100px 40px;
+	width: 90%;
+}
+
 /* FOOTER STYLING */
 footer {
 	position: fixed;

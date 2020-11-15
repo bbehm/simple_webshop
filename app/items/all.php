@@ -16,7 +16,7 @@ if ($_GET['page'] == 'all') {
 	$query_result = mysqli_query($database, "SELECT * FROM items WHERE category='accessories' or subcategory='accessories';");
 }
 
-echo "<h1>Happy shopping!</h1>";
+echo "<div class='body_area_two'><h1>Happy shopping!</h1>";
 echo "<div class='box'>";
 		$item_id = 0;
 		foreach ($query_result as $item) {
@@ -27,7 +27,7 @@ echo "<div class='box'>";
 			echo "<br />";
 			$item_id++;
 		}
-echo "</div>";
+echo "</div></div>";
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Add to Basket') {
 	$item_id = (int)$_POST['hidden'];
