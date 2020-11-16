@@ -1,6 +1,6 @@
 # A Simple Webshop
 
-A simple webshop in PHP created in two days as part of the PHP Piscine at Hive Helsinki. My notes and theory stuff can be found in [notes.md](notes.md).
+A simple webshop in PHP created in two days as part of the PHP Piscine at Hive Helsinki.
 
 ### What does it include?
 
